@@ -418,23 +418,27 @@
         habitants : 1000,
     }
 
-    // 
+    // Rest operator
     let {cityName, ...rest } = konoha
 
+    // Fusion de tableau ou objet
     const tableau2 = ["quatre", "cinq", "six"];
     const tableau3 = [
         ...tableau,
         ...tableau2
     ]
+    // ajout d'un élément
     const tableauCopy = [...tableau, "quatre"]
 
+    // infinité de paramètres
     function afficherNom(premier, ...autres) {
         console.log(premier);
         console.log(autres);
     
     }
 
-    afficherNom("Naruto", "Sasuke", "Luffy", "kaido", "Ussop")
+    afficherNom("Naruto", "Sasuke", "Luffy", "kaido", "Ussop");
+    
 
 
 
