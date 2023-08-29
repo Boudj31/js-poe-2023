@@ -46,6 +46,195 @@
 
     <script>  
 
+    // Solution Yassinn
+    function rendreMonnaieY(montantAchat, sommeDonnee) {
+    const divmod = (x, y) => Math.floor(x / y);
+    //Ex : ma = 30e , sD = 100e => 100 - 30 = 70 => 70/50 = 1
+    let liasse = {
+        billets50 : 0,
+        billets20 : 0,
+        billets10 : 0,
+        billets5 : 0,
+        pieces2 : 0,
+        pieces1 : 0
+    }
+    diff = sommeDonnee - montantAchat;
+    liasse.billets50 = divmod(diff,50);
+    diff = diff % 50;
+    liasse.billets20 = divmod(diff, 20);
+    diff = diff % 20;
+    liasse.billets10 = divmod(diff, 10);
+    diff = diff % 10;
+    liasse.billets5 = divmod(diff, 5);
+    diff = diff % 5;
+    liasse.pieces2 = divmod(diff, 2);
+    liasse.pieces1 = diff % 2;
+
+    return liasse;
+}
+
+console.log(rendreMonnaieY(138, 200));
+
+// Solution Mohamed
+ function rendreMonnaieM(montantAchat, sommeDonnee) {
+            const billetsPieces = [50, 20, 10, 5, 2, 1];
+            const monnaie = sommeDonnee - montantAchat;
+            const resultat = {
+                billets50: 0,
+                billets20: 0,
+                billets10: 0,
+                billets5: 0,
+                pieces2: 0,
+                pieces1: 0
+            };
+
+            let montantRestant = monnaie;
+            let index = 0;
+
+            while (montantRestant > 0) {
+                const billetPiece = billetsPieces[index];
+                const nombreBilletsPieces = Math.floor(montantRestant / billetPiece);
+
+                resultat[`billets${billetPiece}`] = nombreBilletsPieces;
+                montantRestant -= nombreBilletsPieces * billetPiece;
+
+                index++;
+            }
+
+            return resultat;
+        }
+
+        const montantAchat = 85;
+        const sommeDonnee = 200;
+        const exo1 = rendreMonnaieM(montantAchat, sommeDonnee);
+
+        console.log(exo1);
+
+        // Solution Ibra
+        function rendreMonnaieI(montantAchat, sommeDonnee) {
+         const monnaie = sommeDonnee - montantAchat;
+         const billets = [50, 20, 10, 5];
+         const pieces = [2, 1];
+         const attendu = { billets50: null,billets20: null, billets10: null,billets5: null,pieces2: null,pieces1: null};
+         let montantRestant = monnaie;
+     for (const billet of billets) {
+             const nombreBillets = Math.floor(montantRestant / billet);
+             attendu[`billets${billet}`] = nombreBillets;
+             montantRestant -= nombreBillets * billet;
+           }
+        for (const piece of pieces) {
+            const nombrePieces = Math.floor(montantRestant / piece);
+           attendu[`pieces${piece}`] = nombrePieces;
+           montantRestant -= nombrePieces * piece;
+          }
+    return attendu;
+}
+
+// Solution Bastien 
+const rendreMonnaie = (montantAchat, sommeDonnee) => {
+        //let rest = montantAchat-sommeDonnee
+        let rest = sommeDonnee-montantAchat
+        let objRendu = {
+            billets50 : 0,
+            billets20 : 0,
+            billets10 : 0,
+            billets5 : 0,
+            piece2 : 0,
+            piece1 : 0,
+        }
+        
+        while(rest>0){
+            if(rest-50>=0){
+                objRendu.billets50 += 1
+                rest -= 50
+            }else
+            if(rest-20>=0){
+                objRendu.billets20 += 1
+                rest -=20
+            }else
+            if(rest-10>=0){
+                objRendu.billets10 += 1
+                rest -=10
+            }else
+            if(rest-5>=0){
+                objRendu.billets5 += 1
+                rest -=5
+            }else
+            if(rest-2>=0){
+                objRendu.piece2 +=1
+                rest -=2
+            }else
+            if(rest-1>=0){
+                objRendu.piece1 +=1
+                rest -=1   
+            }
+        }
+        return objRendu 
+    }
+
+    // Solution Maxime
+    function rendreMonnaieM(montantAchat, sommeDonnee){
+    const valeurMonnaie ={billet50:50, billet20:20, billet10:10, billet5:5, piece2:2, piece1:1} ;
+    let res = {}
+    let valeurRestante = sommeDonnee - montantAchat;
+
+    for(const [cle, value] of Object.entries(valeurMonnaie)){
+        //res = {...res, cle : valeurRestante/value}
+        res[cle] = Math.floor(valeurRestante/value);
+        valeurRestante = valeurRestante%value;
+        console.log(valeurRestante)
+    }
+    console.log(res)
+    return res;
+}
+
+     // Solution 
+     function rendreMonnaie(montantAchat, sommeDonne) {
+        // vérifier l'input 
+        if(typeof montantAchat !== 'number' && typeof sommeDonne !== 'number') {
+            return "Veuillez mettre des montants correct !"
+        }
+        // Initialisation de l'objet resulat qu'on va construire
+        let resulat = {
+            billets50: 0,
+            billets20: 0,
+            billets10: 0,
+            billets5: 0,
+            pieces2: 0,
+            pieces1: 0,
+        }
+
+        let montantARendre = sommeDonnee - montantAchat; // reliquat
+
+        // TABLEAU pieces et billets avec leur valeurs 
+        let billetsEtPieces = [
+            {nom: "billets50", valeur: 50},
+            {nom: "billets20", valeur: 20},
+            {nom: "billets10", valeur: 10},
+            {nom: "billets5", valeur: 5},
+            {nom: "pieces2", valeur: 2},
+            {nom: "pieces1", valeur: 1},
+        ]
+        for (let i = 0; i< billetsEtPieces.length; i++) {
+            
+            let typeMonnaie = billetsEtPieces[i]
+           //pour chaque billet/pièce  on calcule le nombre de billet/pièce à rendre
+            let nombreMonnaie = Math.floor(montantARendre / typeMonnaie.valeur)
+            // on met à jour le montant restant à rendre
+            montantARendre -= nombreMonnaie * typeMonnaie.valeur;
+            // on met à jour le nb de pièce/billet à rendre dans l'objet resulat
+            resulat[typeMonnaie.nom] = nombreMonnaie
+        }
+
+        return resulat
+
+     }
+     
+
+
+
+ 
+
     </script>
     
 </body>
