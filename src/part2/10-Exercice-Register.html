@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Exercice formulaire d'inscription</title>
+    <script src="exercice.js" defer></script>
+</head>
+<body>
+    <header class="py-4 mb-10 shadow-2xl">
+        <nav class="flex justify-between container mx-auto px-4 text-2xl">
+            <p>Découvrons Javascript</p>
+            <p>By Dawan</p>
+        </nav>
+    </header>
+
+    <main class="min-h-screen container mx-auto px-4">
+        <h1 class="text-5xl font-bold my-8 text-center">
+            Exercice formulaire d'inscription</h1>
+            <section class="mb-5">
+                <h2 class="text-xl uppercase font-semibold text-red-800">Enoncé</h2>
+                <p>Vous devez développer un formulaire de contact </p>
+                <p>Le formulaire doit contenir les champs suivants :</p>
+                <ul class="list-disc list-inside">
+                    <li>Nom (Obligatoire min:2, max:100)</li>
+                    <li>Prénom (Obligatoire min:2, max:100)</li>
+                    <li>Email (Obligatoire , email)</li>
+                    <li>Téléphone (Obligatoire min:10, max:10)</li>
+                    <li>Site web</li>
+                    <li>Mot de passe (Obligatoire , regex)</li>
+                    <li>Confirmation du mot de passe (Obligatoire ,regex, identique au password)</li>
+                </ul>
+                <p>Le formulaire doit être valide avant d'être envoyé 
+                    et reset après soumission </p>
+                <p>Lors de la soumission  :
+                     un message "Un email a été envoyé à l'adresse "email" </p>
+                    <p>Le messsage doit disparaitre au bout de 3s</p>
+            </section>
+     
+    </main>
+
+    <footer class="bg-black py-10 text-white font-thin mt-10">
+        <p class="text-center">
+            Copyright All rights reserved
+        </p>
+    </footer>
+</body>
+</html>
