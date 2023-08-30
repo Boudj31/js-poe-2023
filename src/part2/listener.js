@@ -35,6 +35,7 @@ console.log("Dom loaded");
 console.log("hehehe");
 const btnElement = document.getElementById("btn")
 const playgroundElement = document.getElementById("playground")
+const imgElement = document.getElementById("img")
 
 function handleClick() {
 console.log("heheheh");
@@ -47,8 +48,27 @@ playgroundElement.appendChild(pElement)
  // GARBAGE COLLECTOR
 btnElement.removeEventListener("click", handleClick )
 }
-
 btnElement.addEventListener("click", handleClick)
+
+// Scroll
+window.addEventListener("scroll", function() {
+    console.log("scroll");
+})
+// Resize 
+window.addEventListener("resize", function() {
+    const width = this.window.innerWidth
+    console.log("Width" , width);
+})
+
+imgElement.addEventListener("mouseover", function(){
+    imgElement.classList.add("border-4", "border-cyan-800")
+})
+
+imgElement.addEventListener("mouseout", function() {
+    imgElement.classList.remove("border-4", "border-cyan-800")
+})
+
+
 
 
 
