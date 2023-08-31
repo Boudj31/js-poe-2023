@@ -15,7 +15,7 @@ function isValidPassword(password) {
 // Afficher un message
 function showMessage(text, color) {
   console.log(text, color);
-  message.textContent = text;
+  message.textContent = "Le formulaire est invalide";
   message.classList.add(`border-${color}-500`, `text-${color}-500`);
 }
 // changer la bordure
