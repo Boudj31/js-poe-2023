@@ -50,7 +50,7 @@
             }, 2000);
         }
 
-        
+
         function echec4() {
             try {
                 setTimeout(() => {
@@ -90,7 +90,60 @@
             erreur soit capturée.
         </p>
          <code class="block whitespace-pre bg-gray-100 shadow-lg my-2 italic text-lg">
-    
+       const error = new Error("Erreur de type Error") // fonction constructeur
+        console.log(error.message)
+        console.log(error.name)
+        console.log(error.stack)
+
+        // throw
+        throw new Error("Oooooops")
+        new ReferenceError("Erreur de reference")
+        new SyntaxError("Erreur de syntaxte")
+        new TypeError("Erreur de type")
+
+        consol.log("dsfjidke")
+
+        // try/catch 
+        function echec() {
+            try {
+                throw new Error("ahhahha")
+                console.log("hehehhe")
+            } catch(e) {
+                console.error(`Erreur capturée : ${e}`)
+            } finally {
+                console.log("zehahaha")
+            }
+        }
+        // si on ne capture l'erreur le programme s'arrete 
+        function echec2() {
+                throw new Error("ahhahha")
+                console.log("hehehhe")
+        }
+        echec2() // stop le programme 
+        console.log("fin du script")
+
+
+        // si opération async, le catch doit être dans le callback
+        function echec3() {
+            setTimeout(() => {
+                try {
+                    throw new Error("Ops")
+                } catch (e) {
+                    console.log("Erreur: " + e)
+                }
+            }, 2000);
+        }
+
+        
+        function echec4() {
+            try {
+                setTimeout(() => {
+                    throw new Error("Ops") 
+                  }, 2000); 
+            } catch (e) {
+                    console.log("Erreur: " + e)
+                }
+        }
         </code>    
 
    
