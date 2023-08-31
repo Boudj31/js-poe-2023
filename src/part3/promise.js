@@ -117,6 +117,8 @@ fetchData(1)
     console.log(d3)
     return fetchData(4)
 })
+
+
 // Promise ALL 
 
 
