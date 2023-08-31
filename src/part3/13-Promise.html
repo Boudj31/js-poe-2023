@@ -148,7 +148,117 @@
                   return fetchData(4)
               })
            
-        </code>    
+        </code>   
+        <h2 class="text-lg my-2">Async await</h2> 
+        <code class="block whitespace-pre bg-gray-100 shadow-lg my-2 italic text-lg">
+            // Async Await (ES8)
+            function gatherChackra() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                       console.log("Chakra chargé !")
+                       resolve()
+                    }, 2000)
+                })
+            }
+            
+            function rasengan(target) {
+                console.log(`Rasengan sur ${target}`)
+            }
+            
+            function shadowCloneJutsu() {
+                console.log("Invocation du clone des ombres");
+            }
+            
+            // promesse classique
+            function narutoMove() {
+                console.log("Naruto se prépare a attaquer")
+                gatherChackra().then(() => {
+                    rasengan("Itachi")
+                    shadowCloneJutsu()
+                }).catch((e) => {
+                    console.log(e)
+                });
+            }
+            // avec async await ecrire du code asyncrone comme si c'était du code sync
+            // Syntaxical sugar 
+            const minatoMove = async () => {
+                console.log("Minato se prépare a attaquer")
+                await gatherChackra() // Pause
+                rasengan("Itachi")
+                shadowCloneJutsu()
+            }
+            
+            function fetchData(id) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        const data = {
+                          userId: id,
+                          title: "This is the title for" + id,
+                        };
+                        resolve(data);
+                      }, 1000);
+                })
+            }     
+            
+            async function fetchAllData() {
+                const data1 = await fetchData(1) // pause
+                console.log("Data 1" + data1.title)
+                const data2 = await fetchData(2) // pause
+                console.log("Data 2" + data2.title)
+                const data3 = await fetchData(3) // pause
+                console.log("Data 3" + data3.title)
+            
+            }
+            
+            function gatherChackra2() {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                       reject("OOOOPS")
+                    }, 2000)
+                })
+            }
+            
+            async function sasukeMove() {
+                console.log("Sasuke se prépare a attaquer")
+                try {
+                    await gatherChackra2()
+                    rasengan("Itachi")
+                    shadowCloneJutsu()
+                } catch (error) {
+                    console.log(error)
+                } finally {
+                    console.log("Sasuke a finis son attaque")
+                }
+            }
+          
+       </code>  
+       <h2 class="text-lg my-2">Promise All</h2>
+       <code class="block whitespace-pre bg-gray-100 shadow-lg my-2 italic text-lg">
+        // Promise ALL 
+        const promesse1 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Promesse 1")
+            }, 5000);
+        })
+        const promesse2 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                reject("Promesse 2")
+            }, 5000);
+        })
+        const promesse3 = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Promesse 3")
+            }, 5000);
+        })
+        
+        // Promise all permet de lancer plusieurs simultanément 
+        // si toutes les promesses sont résolues , il renvoie les resultat dans un tableau
+        // si une des promesses échoue, elles échouent toutes.
+        Promise.all([promesse1, promesse2, promesse3])
+               .then((res) => console.log(res))
+               .catch((e) => console.log("Erreur : " + e))
+          
+       </code>  
 
    
     </main>
