@@ -9,42 +9,42 @@ function fetchData(id, callback) {
 }
 
 // Pyramid of Doom : Callback hell
-// console.log("Staring fetching data");
-// fetchData(1, function (err, data1) {
-//   if (err) {
-//     console.error("Error fetching data for user 1:", err);
-//   } else {
-//     console.log("Data for user 1:", data1);
-//     fetchData(2, function (err, data2) {
-//       if (err) {
-//         console.error("Error fetching data for user 2:", err);
-//       } else {
-//         console.log("Data for user 2:", data2);
-//         fetchData(3, function (err, data3) {
-//           if (err) {
-//             console.error("Error fetching data for user 3:", err);
-//           } else {
-//             console.log("Data for user 3:", data3);
-//           }
-//         });
-//         fetchData(4, function (err, data4) {
-//           if (err) {
-//             console.error("Error fetching data for user 4:", err);
-//           } else {
-//             console.log("Data for user 4:", data4);
-//           }
-//         });
-//         fetchData(5, function (err, data5) {
-//           if (err) {
-//             console.error("Error fetching data for user 5:", err);
-//           } else {
-//             console.log("Data for user 5:", data5);
-//           }
-//         });
-//       }
-//     });
-//   }
-// });
+console.log("Staring fetching data");
+fetchData(1, function (err, data1) {
+  if (err) {
+    console.error("Error fetching data for user 1:", err);
+  } else {
+    console.log("Data for user 1:", data1);
+    fetchData(2, function (err, data2) {
+      if (err) {
+        console.error("Error fetching data for user 2:", err);
+      } else {
+        console.log("Data for user 2:", data2);
+        fetchData(3, function (err, data3) {
+          if (err) {
+            console.error("Error fetching data for user 3:", err);
+          } else {
+            console.log("Data for user 3:", data3);
+          }
+        });
+        fetchData(4, function (err, data4) {
+          if (err) {
+            console.error("Error fetching data for user 4:", err);
+          } else {
+            console.log("Data for user 4:", data4);
+          }
+        });
+        fetchData(5, function (err, data5) {
+          if (err) {
+            console.error("Error fetching data for user 5:", err);
+          } else {
+            console.log("Data for user 5:", data5);
+          }
+        });
+      }
+    });
+  }
+});
 
 
 const promise = new Promise((resolve, reject) => {
