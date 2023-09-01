@@ -118,10 +118,59 @@ let graySort = gray.lancerUnSort.bind(gray)
 
 let natsuSort2 = natsu.lancerUnSort
 
-
+// Encapsulation
 // getter et setter 
+class Witcher {
 
+    #privacy = 34; // Pas officielle
 
+    constructor(nom, age) {
+        this._nom = nom // convention de nommage entre dev pour indiquer que la prop est privé
+        this._age = age 
+        this._level = 1
+        this._nickName = "De Riv"
+    }
+
+    // getter : 
+    get nom() {
+        console.log("Récuparation du nom du sorceleur")
+        return this._nom
+    }
+
+    // Setter : 
+    set nom(newNom) {
+        console.log("Modification du nom")
+        this._nom = newNom
+    }
+
+    get age() {
+        console.log("Récuparation de l'age du sorceleur")
+        return this._age
+    }
+
+    set age(newAge) {
+        console.log("Modification de l'age")
+        if(newAge > this._age) {
+            console.log("Le sorceleur viellit")
+            this._level += 1
+        }
+        this._age = newAge
+
+    }
+}
+let geralt = new Witcher("Geralt", 234)
+geralt.nom // Récuparation du nom du sorceleur // "Geralt"
+geralt.privacy
+
+class Elf {
+    constructor(nom) {
+        this.nom = nom
+    }
+
+    static direBonjour() {
+        console.log("Bonjour")
+    }
+}
 
 
 
